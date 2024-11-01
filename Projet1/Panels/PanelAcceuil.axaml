@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Projet1.Panels.PanelAcceuil" 
+             Background="White">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Bienvenue dans votre application" 
+                   FontSize="24" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,20,0,20" 
+                   Foreground="Black"/>
+        
+        <Button x:Name="BtnAction" 
+                Content="Cliquez ici pour une action" 
+                HorizontalAlignment="Center" 
+                Margin="0,10,0,0"/>
+        
+        <TextBlock x:Name="StatusMessage" 
+                   HorizontalAlignment="Center" 
+                   Foreground="Green" 
+                   Margin="0,10,0,0"/>
+    </StackPanel>
+</UserControl>
