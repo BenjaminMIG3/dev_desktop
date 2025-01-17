@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Projet1.Panels.PanelDetailArticle"
+             xmlns:conv="clr-namespace:Projet1.Utils"
+             Background="Gray">
+    <UserControl.Resources>
+        <conv:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
+    </UserControl.Resources>
+
+    <DockPanel Margin="20">
+        <Border Background="#404040" CornerRadius="10" Padding="20" DockPanel.Dock="Top">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="20">
+                <TextBlock Text="Article sélectionné:" 
+                           Margin="0,10" 
+                           Foreground="White"
+                           HorizontalAlignment="Center" 
+                           FontWeight="Bold" FontSize="16"/>
+
+                <TextBlock x:Name="NomArticle"
+                           Text=""
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           FontSize="18"
+                           Foreground="White" />
+
+                <Image x:Name="ImageArticle"
+                       Source=""
+                       Height="150" Width="150" HorizontalAlignment="Center" />
+
+                <TextBlock x:Name="PrixArticle"
+                           Text=""
+                           Foreground="White" 
+                           HorizontalAlignment="Center" FontSize="14" />
+
+                <TextBlock x:Name="DescriptionArticle"
+                           Text=""
+                           HorizontalAlignment="Center" 
+                           FontSize="12"
+                           Foreground="White" TextWrapping="Wrap" />
+
+                <TextBlock x:Name="MessageConfirmation"
+                           Text=""
+                           HorizontalAlignment="Center"
+                           FontSize="12"
+                           Foreground="White"
+                           Background="Transparent"/>
+
+                <Button Name="btnAddToCart" Content="Ajouter au panier" 
+                        Click="OnAjouterAuPanierClick"/>
+
+                <Button 
+                    Content="Retour"
+                    HorizontalAlignment="Center"
+                    Click="OnRetourClick"
+                />
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</UserControl>

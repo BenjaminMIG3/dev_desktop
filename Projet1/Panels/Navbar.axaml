@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Projet1.Panels.Navbar"
+             xmlns:local="clr-namespace:Projet1.Entite"  
+             >
+    <StackPanel>
+        <Grid x:Name="NavbarConnected">
+            <Grid Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>  
+                    <ColumnDefinition Width="*"/>  
+                    <ColumnDefinition Width="*"/>  
+                    <ColumnDefinition Width="*"/>  
+                </Grid.ColumnDefinitions>
+                <Button x:Name="BtnAcceuil" Content="Accueil" Grid.Column="0" 
+                        Foreground="White" Background="#2c2c2c" FontSize="16"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="BtnCompte" Content="Compte" Grid.Column="2" 
+                        Foreground="White" Background="#2c2c2c" FontSize="16"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Mes commandes" Click="OnMesCommandesClicked"/>
+                            <MenuItem Header="Paramètres" Click="OnParametresClicked"/>
+                            <MenuItem Header="Déconnexion" Click="OnDeconnexionClicked"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+                <Button x:Name="BtnGestion" Content="Gestion" Grid.Column="1" 
+                    Foreground="White" Background="#2c2c2c" FontSize="16"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Click="BtnGestion_Click"/>
+                <Button x:Name="BtnPanier" Content="Panier" Grid.Column="3" 
+                    Foreground="White" Background="#2c2c2c" FontSize="16"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Click="BtnPanier_Click"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="NavbarConnexion">
+            <Grid Background="#444444" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="BtnConnexion" Content="Connexion" Grid.Column="0" 
+                        Foreground="White" Background="#2c2c2c" FontSize="16"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</UserControl>

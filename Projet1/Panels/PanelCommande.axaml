@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Projet1.Panels.PanelCommande" 
+             xmlns:local="clr-namespace:Projet1.Entite"  
+             Background="Gray">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel Width="800" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Mes Commandes" 
+                       HorizontalAlignment="Center" 
+                       FontStyle="Italic" 
+                       Margin="10" 
+                       Foreground="White" />
+            
+            <ItemsControl Name="ListeArticles" ItemsSource="{Binding LesCommandes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="local:Facturation">
+                        <Border Padding="10" BorderBrush="White" BorderThickness="1" Margin="5" Width="200" Height="150">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding DateFacturation, StringFormat='Date : {0:dd/MM/yyyy}'}" 
+                                           FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding MontantFacturation, StringFormat='Total : {0:C}'}" 
+                                           FontSize="14" Foreground="White" HorizontalAlignment="Center" />
+                                <Button Content="Voir détails" 
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center" 
+                                    IsEnabled="True"
+                                    Click="Commande_Click"
+                                    Margin="10"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

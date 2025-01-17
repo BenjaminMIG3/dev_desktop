@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Projet1.Panels.FormPanel" 
+             Background="Gray">
+    
+    <StackPanel Width="400" HorizontalAlignment="Center" VerticalAlignment="Center"> 
+        <Border CornerRadius="10" Padding="20" BorderThickness="1" BorderBrush="black" Background="#444444" HorizontalAlignment="Stretch">
+            <StackPanel>
+                <TextBlock Text="Login : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBox Name="LoginInput" Height="40" Watermark="Nom d'utilisateur" Background="Transparent" Foreground="white" BorderBrush="Black" BorderThickness="1"/>
+                <TextBlock Text="Mot de passe : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <TextBox Name="PasswordInput" Height="40" Watermark="Mot de passe" Background="Transparent" Foreground="white" PasswordChar="*" BorderBrush="Black" BorderThickness="1"/>
+                <Button x:Name="BtnConnexion" HorizontalAlignment="Center" Margin="0,20,0,0">Connexion</Button>
+                
+                <Border x:Name="ContainError" Background="Transparent" Cursor="Hand" Margin="0,10,0,0">
+                    <TextBlock x:Name="ErrorMessage" Foreground="Red" FontSize="12" HorizontalAlignment="Center" Margin="0,10,0,0" IsVisible="False"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

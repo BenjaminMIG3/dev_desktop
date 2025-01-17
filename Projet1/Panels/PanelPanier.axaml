@@ -1,0 +1,82 @@
+<UserControl xmlns="https://github.com/avaloniaui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Projet1.Panels.PanelPanier" 
+             xmlns:local="clr-namespace:Projet1.Entite"  
+             xmlns:conv="clr-namespace:Projet1.Utils"
+             Background="Gray">
+    <UserControl.Resources>
+        <conv:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" />
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel Width="800" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Name="MessageAcceuil" 
+                       Text="Détails de votre Panier" 
+                       HorizontalAlignment="Center" 
+                       FontStyle="Italic" 
+                       Margin="10" />
+            <ItemsControl Name="ListeArticles" ItemsSource="{Binding LesArticles}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="local:Article">
+                        <Border Padding="10" BorderBrush="Black" BorderThickness="1" Margin="5" Width="150" Height="180">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Source="{Binding DataImage, Converter={StaticResource ByteArrayToImageConverter}}" 
+                                        Height="100" Width="100" 
+                                        Stretch="UniformToFill" 
+                                        HorizontalAlignment="Center" 
+                                        Margin="0,0,0,10" />
+
+                                    <TextBlock Text="{Binding Nom}" 
+                                            FontWeight="Bold" 
+                                            FontSize="16" 
+                                            HorizontalAlignment="Center" 
+                                            Margin="0,0,0,5" />
+
+                                    <TextBlock Text="{Binding Prix, StringFormat='Prix : {0:C}'}" 
+                                            FontSize="14" 
+                                            HorizontalAlignment="Center" />
+                                </StackPanel>
+
+                                <Button Background="White" Foreground="Red" FontSize="18" 
+                                        FontWeight="Bold" HorizontalAlignment="Right" 
+                                        VerticalAlignment="Top" Width="30" Height="30" Click="OnRemoveArticleClick">
+                                    <TextBlock Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Name="MessagePanierVide" 
+                       Text="Le panier est vide." 
+                       HorizontalAlignment="Center" 
+                       FontStyle="Italic" 
+                       Margin="10" />
+
+            <TextBlock Name="TotalPanier" 
+                Text="{Binding Total, StringFormat='Total : {0}'}" 
+                FontWeight="Bold" 
+                Margin="0,10" 
+                HorizontalAlignment="Center" />
+
+            <Button Name="BoutonPayer" 
+                    Content="Payer le panier" 
+                    Click="OnBoutonPayerClick"
+                    Margin="0,10" 
+                    HorizontalAlignment="Center" />
+            
+            <TextBlock Name="MessageValidation" 
+                       Text="" 
+                       HorizontalAlignment="Center" 
+                       Margin="10" 
+                       FontWeight="Bold" 
+                       FontSize="14" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

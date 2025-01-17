@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="Projet1.Panels.PanelGestion" 
+             Background="Gray">
+
+    <StackPanel Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border CornerRadius="10" Padding="20" BorderThickness="1" BorderBrush="black" Background="#444444" HorizontalAlignment="Stretch">
+            <StackPanel>
+                <TextBlock Text="Nom de l'article : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                <TextBox Name="NomInput" Height="40" Watermark="Nom de l'article" Background="Transparent" Foreground="white" BorderBrush="Black" BorderThickness="1"/>
+                
+                <TextBlock Text="Description : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <TextBox Name="DescriptionInput" Height="80" Watermark="Description de l'article" Background="Transparent" Foreground="white" BorderBrush="Black" BorderThickness="1" AcceptsReturn="True"/>
+                
+                <TextBlock Text="Prix : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <TextBox Name="PrixInput" Height="40" Watermark="Prix" Background="Transparent" Foreground="white" BorderBrush="Black" BorderThickness="1"/>
+                
+                <TextBlock Text="Image : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BtnSelectImage" Content="Sélectionner une image" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="SelectedImagePath" Foreground="white" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Text="Catégorie : " Foreground="white" FontSize="14" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+                <ComboBox Name="CategorieComboBox" Height="40" Background="Transparent" Foreground="White" BorderBrush="Black" BorderThickness="1"
+                        ItemsSource="{Binding Categories}" SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Designation}" Foreground="White"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button x:Name="BtnCreerArticle" HorizontalAlignment="Center" Margin="0,20,0,0">Créer l'article</Button>
+                <Border x:Name="ContainError" Background="Transparent" Cursor="Hand" Margin="0,10,0,0">
+                    <TextBlock x:Name="ErrorMessage" Foreground="Red" FontSize="12" HorizontalAlignment="Center" Margin="0,10,0,0" IsVisible="False"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

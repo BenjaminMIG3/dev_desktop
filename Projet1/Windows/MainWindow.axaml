@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:panels="clr-namespace:Projet1.Panels"
+        x:Class="Projet1.Windows.MainWindow"
+        Title="Projet1" 
+        Width="800" 
+        Height="800">
+
+    <DockPanel>
+        <!-- Navbar en haut -->
+        <panels:Navbar x:Name="PanelNavbar" DockPanel.Dock="Top"/> 
+        
+        <!-- Panel de connexion au centre -->
+        <ContentControl x:Name="MainContent"/>
+    </DockPanel>
+</Window>
