@@ -60,10 +60,10 @@ namespace Projet1.Panels
 
         private void OnMinOrMaxPriceChanged()
         {
-            UpdateArticleList(); // Recharge la liste filtrée si nécessaire
+            UpdateArticleList();
         }
 
-        private double _maxPrice = 1000; // Valeur initiale par défaut
+        private double _maxPrice = 1000;
         public double MaxPrice
         {
             get => _maxPrice;
@@ -95,7 +95,7 @@ namespace Projet1.Panels
                 {
                     _selectedPrice = value;
                     OnPropertyChanged(nameof(SelectedPrice));
-                    ApplyPriceFilter(); // Applique le filtre
+                    ApplyPriceFilter();
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace Projet1.Panels
 
         public ObservableCollection<KeyValuePair<int, string>> Categories { get; private set; }
 
-        private int _selectedCategoryId = 0; // Par défaut, "Tous"
+        private int _selectedCategoryId = 0;
         public int SelectedCategoryId
         {
             get => _selectedCategoryId;
@@ -135,8 +135,8 @@ namespace Projet1.Panels
                 {
                     _selectedCategory = value;
                     OnPropertyChanged(nameof(SelectedCategory));
-                    SelectedCategoryId = value.Key; // Met à jour l'ID sélectionné
-                    UpdateFilteredArticles();  // Applique les filtres dès que la catégorie change
+                    SelectedCategoryId = value.Key;
+                    UpdateFilteredArticles();
                 }
             }
         }
@@ -145,30 +145,27 @@ namespace Projet1.Panels
         {
             var articles = App.MonModel.GetAllArticles();
 
-            // Appliquer le filtre par catégorie
-            if (SelectedCategoryId > 0)  // Vérifier si la catégorie sélectionnée est autre que "Tous"
+            if (SelectedCategoryId > 0) 
             {
                 articles = articles.Where(a => a.IdCategorie == SelectedCategoryId).ToList();
             }
 
-            // Appliquer le filtre par prix
             if (SelectedPrice > 0)
             {
                 articles = articles.Where(a => a.Prix <= SelectedPrice).ToList();
             }
 
-            // Mise à jour des articles affichés
             LesArticles = new ObservableCollection<Article>(articles);
             FilteredArticles = new ObservableCollection<Article>(articles);
         }
 
         public PanelAcceuil()
         {
-            Categories = new ObservableCollection<KeyValuePair<int, string>>(_categories); // Initialisation des catégories
+            Categories = new ObservableCollection<KeyValuePair<int, string>>(_categories); 
             LesArticles = new ObservableCollection<Article>(App.MonModel.GetAllArticles());
 
             if (LesArticles is not null)
-                FilteredArticles = new ObservableCollection<Article>(LesArticles); // Initialise avec tous les articles
+                FilteredArticles = new ObservableCollection<Article>(LesArticles);
 
             this.DataContext = this;
 
