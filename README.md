@@ -1,4 +1,4 @@
-Le fichier executable se trouve à la racine du dépot sous win64
+Le fichier executable  ici : Projet1/bin/Release/net8.0/Projet1.exe 
 
 Le code source se trouve dans Projet1
 
