@@ -10,23 +10,38 @@
     </UserControl.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Left" Width="200" Background="LightGray" HorizontalAlignment="Center" Padding="10">
-            <StackPanel HorizontalAlignment="Center">
-                <TextBlock Text="Filtres" FontWeight="Bold" FontSize="30" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                
-                <Border BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="0,10">
-                    <StackPanel>
-                        <TextBlock Text="Filtrer par prix:" Margin="0,10" HorizontalAlignment="Center"/>
-                        <Slider x:Name="PriceSlider" TickFrequency="10" Value="{Binding SelectedPrice, Mode=TwoWay}" IsSnapToTickEnabled="False"/>
-                        <TextBlock Text="{Binding SelectedPrice, StringFormat={}{0} €}" HorizontalAlignment="Center" Margin="0,10"/>
-                    </StackPanel>
-                </Border>
+            <StackPanel>
+                <!-- Champ pour saisir la valeur Max -->
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Max :" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox Text="{Binding MaxPrice, Mode=TwoWay}" Width="80" HorizontalAlignment="Left"/>
+                </StackPanel>
 
-                <Border BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="0,10">
-                    <StackPanel>
-                        <TextBlock Text="Filtrer par catégorie:" Margin="0,10" HorizontalAlignment="Center"/>
-                        <Button Content="Filtrer par catégorie" Margin="0,5" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
+                <!-- Slider lié à la propriété MaxPrice -->
+                <TextBlock Text="Filtrer par prix:" Margin="0,10" HorizontalAlignment="Center"/>
+                <Slider x:Name="PriceSlider"
+                        Minimum="0"
+                        Maximum="{Binding MaxPrice, Mode=TwoWay}" 
+                        Value="{Binding SelectedPrice, Mode=TwoWay}"
+                        TickFrequency="10"
+                        IsSnapToTickEnabled="False"/>
+                <TextBox Text="{Binding SelectedPrice, Mode=TwoWay}" Width="80" HorizontalAlignment="Center" Margin="10,0,0,0"/>
+                
+                <!-- Filtre par Catégorie -->
+                <StackPanel Orientation="Horizontal" Margin="0,10">
+                    <TextBlock Text="Catégorie :" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <ComboBox 
+                        ItemsSource="{Binding Categories}" 
+                        SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" 
+                        Width="100" 
+                        HorizontalAlignment="Left">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Value}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
         </Border>
         
@@ -47,7 +62,7 @@
                            FontWeight="Bold"/>
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="500" Margin="0,0,0,20">
-                    <ItemsControl ItemsSource="{Binding LesArticles}">
+                    <ItemsControl ItemsSource="{Binding FilteredArticles}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel ItemWidth="200" ItemHeight="250" />
